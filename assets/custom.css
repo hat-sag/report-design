@@ -1,0 +1,50 @@
+/* Logo and text in sidebar */
+.app-name img {
+    max-width: 30px !important;
+}
+  
+.app-name:after {
+    content: 'Design Standards';
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Cover page styling */
+section.cover {
+    height: 100vh;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Remove the mask/overlay completely */
+section.cover::before {
+    background: none !important;
+}
+
+section.cover.show::before {
+    background: none !important;
+}
+
+/* Cover buttons */
+.cover .get-started {
+    background-color: #42b983 !important;
+    color: white !important;
+}
+
+/* Optional: If you want the GitHub button to match */
+.cover .github {
+    background-color: #42b983 !important;
+    color: white !important;
+}
+
+/* Change mask color */
+.mask {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Disable mask */
+  .mask {
+    display: none;
+  }
