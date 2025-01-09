@@ -2,12 +2,15 @@
   [Resources](/quick-start/applying-the-theme.md)
 
 - [**Layout & Spacing**](/layout-and-spacing.md)
-  [Arranging Visuals](/layout-and-spacing/arranging-visuals.md)
+  [Standard Elements](data-visualization/anatomy.md)
+  [Arrangement](/layout-and-spacing/arranging-visuals.md)
   [Slicers & Filters Placement](/layout-and-spacing/slicers-and-filters.md)
 
-- [**Data Visualization Basics**](/data-visualization-basics.md)
-  [Choosing the Right Chart](/data-visualization-basics/choosing-chart.md)
-  [Labels, Legends & Tooltips](/data-visualization-basics/labels-legends-tooltips.md)
+- [**Data Visualization**](data-visualization/basics.md)
+  [Chart Selection](data-visualization/selection.md)
+  [Chart Anatomy](data-visualization/anatomy.md)
+  [Use of Color](data-visualization/color.md)
+  [Chart-Specific Styling](data-visualization/chart-specific.md)
 
 - [**UI & Interaction**](/ui-and-interaction.md)
   [Buttons & Navigation](/ui-and-interaction/buttons-and-navigation.md)

@@ -7,46 +7,26 @@ code, pre {
     font-family: 'Inconsolata', monospace;
 }
 
-/* Cover page styling */
-section.cover {
-    height: 100vh;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-}
-
-/* Remove the mask/overlay completely */
-section.cover::before {
-    background: none !important;
-}
-
-section.cover.show::before {
-    background: none !important;
-}
-
-/* Cover buttons */
-.cover .get-started {
-    background-color: #42b983 !important;
-    color: white !important;
-}
-
-/* Optional: If you want the GitHub button to match */
-.cover .github {
-    background-color: #42b983 !important;
-    color: white !important;
-}
-
 /* Change mask color */
 .mask {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.1) !important;
   }
   
   /* Disable mask */
   .mask {
-    display: none;
+    display: none; 
   }
-  .columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2em;
+
+:root {
+    --theme-color: #406177;
+    --font-size  : 15px;
+    --line-height: 1.5;
+  }
+
+  .search input {
+    background-color: transparent; /* or any specific color you want */
+    color: inherit; /* this will inherit the text color from parent */
+    /* Optional: you might also want to adjust these for better visibility */
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 7px 7px 7px 36px;
   }

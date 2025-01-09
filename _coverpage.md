@@ -1,15 +1,12 @@
-<!-- _coverpage.md -->
+# Aline Report Design Documentation
 
-# Design Standards
-
-> A guide for creating consistent, high-quality reports
+> Guidelines for designing consistent, elegant, user-centric reports.
 
 - Clear guidelines and best practices
 - Ready-to-use templates
 - Practical examples
 
-[Get Started](overview.md)
+[Get Started](content/overview.md)
 [GitHub](https://github.com/yourusername/yourrepo)
 
-<!-- background image -->
-![](assets/ripple-gold.jpg)
+![background](assets/ripple-pink-2.jpg)
