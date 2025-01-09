@@ -1,13 +1,10 @@
-/* Logo and text in sidebar */
-.app-name img {
-    max-width: 30px !important;
+
+body {
+    font-family: 'Open Sans', sans-serif;
 }
-  
-.app-name:after {
-    content: 'Design Standards';
-    margin-left: 10px;
-    display: inline-block;
-    vertical-align: middle;
+
+code, pre {
+    font-family: 'Inconsolata', monospace;
 }
 
 /* Cover page styling */
@@ -47,4 +44,9 @@ section.cover.show::before {
   /* Disable mask */
   .mask {
     display: none;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
   }

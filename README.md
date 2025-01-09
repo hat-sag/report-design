@@ -1,31 +1,29 @@
-# Reporting Design Standards
+# Aline Reporting Design Guidelines
 
-> A simple [Docsify](https://github.com/docsifyjs/docsify/) template for creating Markdown-based documentation sites, with no build process required.
+<table>
+<tr>
+<td width="35%" style="border: none; vertical-align: top;">
 
-## Site Setup
+### About this document
 
-### Static Webserver
-Upload these template files to any static web server. The file `.nojekyll` is only required if hosting the site on GitHub Pages and otherwise can be removed.
+Design guidelines can be an important tool for creating visually appealing, intuitive, insightful dashboards. However, they are not meant to be a strict set of rules that must be followed at all times. Instead, they serve as a source of inspiration and guidance, helping to make informed decisions while still allowing for creativity and innovation. This should be seen as a flexible framework for design that takes into account the goals, values, and needs of the report and its users.
 
-### GitHub Pages
+</td>
+<td width="42%" style="border: none; vertical-align: top;">
 
-#### Hosting Site
+### Essential
+- Prioritize the data and forget the fluff.
+- Reports consider the utility in answering a question or solving a problem.
 
-To host this template on GitHub Pages do the following:  
+### Impactful
+- Offers insights in the first 3, 30, and 300 seconds.
+- Enables the user to reach their goal and explore the subject in detail by using a clear system of filters, functions, and established interaction patterns that make the affordance unmistakable.
 
-1. Log into GitHub if you have not done so already
-2. Tap the **Use this template** button in the upper-right of this GitHub Repository and choose **Create a new repository**
-3. Enter a name for your new Repository and then tap the **Create repository** button
-4. Once your new Repostitory is created go to **Settings**, then select **Pages** from the left-hand sidebar, and under **Branch** choose **main** and then tap the **Save** button
-5. Wait a minute or two and refresh the same **Pages** page - once your site is ready a message will be displayed at the top of the screen along with a site link and a **Visit site** button
+### Intuitive
+- Communicates the important story in a clear, concise, easy-to-understand way.
+- A definite structure, contrast, rhythm and hierarchy guides users through complex information.
+- The final result respects the time required by the audience being asked to experience it.
+</td>
+</tr>
+</table>
 
-#### Editing Content
-
-How about editing the content of your new Docsify site on GitHub Pages? View the Markdown page you want to edit (for example, **README.md**) and tap the **Pencil Icon**, then save any changes by tapping the green **Commit changes...** button. In just a few moments the Docsify site will be automatically updated to reflect those changes.
-
-### Viewing Locally 
-Run `npx serve .` (Node.js users) or `python -m http.server 8000` (Python users) in the repo folder to serve run locally.
-
-## Docsify Documentation
-
-To learn more about using Docsify, visit https://docsify.js.org.
