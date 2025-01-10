@@ -1,2 +1,4 @@
 # Progressive Disclosure
 > Designing for exploration without overwhelm
+
+It’s important in navigation because it helps prevent overwhelming users with too much information at once. Designers should gradually reveal information and options as users progress through a report, and so guide them through the experience in a more manageable and intuitive way. Users can then focus on the most relevant content and tasks—with lower cognitive load while they enjoy greater overall usability. Progressive disclosure can help prioritize important information and actions, too—pointing users to easily find what they need without feeling overwhelmed.
