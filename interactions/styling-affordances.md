@@ -1,0 +1,2 @@
+# Styling Affordances
+> Indicating functionality 
