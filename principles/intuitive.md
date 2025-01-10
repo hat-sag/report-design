@@ -1,4 +1,7 @@
 # Intuitive reports are easy to use.
+- Communicates the important story in a clear, concise, easy-to-understand way.
+- A definite structure, contrast, rhythm and hierarchy guides users through complex information.
+- The final result respects the time required by the audience being asked to experience it.
 
 >**Jakob Nielsen's 10 general principles for interaction design.** They are called "heuristics" because they are broad rules of thumb and not specific usability guidelines.
 Source: [Nielson Group](https://www.nngroup.com/articles/ten-usability-heuristics/)

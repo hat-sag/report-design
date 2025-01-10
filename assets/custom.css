@@ -30,3 +30,8 @@ code, pre {
     border: 1px solid rgba(0, 0, 0, 0.07);
     padding: 7px 7px 7px 36px;
   }
+
+  .sidebar {
+    padding-left: 15px;
+  }
+  

@@ -1,8 +1,9 @@
 # Aline Reporting Design Guidelines
 
+
 <table>
 <tr>
-<td width="35%" style="border: none; vertical-align: top;">
+<td width="30%" style="border: none; vertical-align: top;">
 
 ### About this document
 
@@ -11,19 +12,9 @@ Design guidelines can be an important tool for creating visually appealing, intu
 </td>
 <td width="42%" style="border: none; vertical-align: top;">
 
-### Impactful
-- Offers insights in the first 3, 30, and 300 seconds.
-- Enables the user to reach their goal and explore the subject in detail by using a clear system of filters, functions, and established interaction patterns that make the affordance unmistakable.
-
-### Essential
-- Prioritize the data and forget the fluff.
-- Reports consider the utility in answering a question or solving a problem.
-
-### Intuitive
-- Communicates the important story in a clear, concise, easy-to-understand way.
-- A definite structure, contrast, rhythm and hierarchy guides users through complex information.
-- The final result respects the time required by the audience being asked to experience it.
+### Navigating the guidelines
+1. **Were you handed specs or wireframes?**  
+If not, consider reading through the principles sections to help inform report content and flow.
 </td>
 </tr>
 </table>
-

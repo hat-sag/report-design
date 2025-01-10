@@ -1,0 +1,49 @@
+.color-row {
+    display: flex;
+    gap: 8px;
+    margin: 1em 0;
+  }
+  
+  .color-block {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 14px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+    position: relative;
+  }
+  
+  .color-block:hover {
+    transform: scale(1.05);
+  }
+  
+  .color-code {
+    z-index: 1;
+  }
+  
+  .copy-feedback {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 12px;
+    background: rgba(0,0,0,0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  
+  .color-block.copied .copy-feedback {
+    opacity: 1;
+  }
+  
+  .color-block.copied .color-code {
+    opacity: 0;
+  }
