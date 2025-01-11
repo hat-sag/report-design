@@ -1,0 +1,52 @@
+{
+    "start": {
+      "question": "What kind of insight are you looking for?",
+      "options": [
+        { "text": "Compare categories", "next": "categorical" },
+        { "text": "Analyze trends over time", "next": "time-series" },
+        { "text": "Explore relationships between variables", "next": "numerical" }
+      ]
+    },
+    "categorical": {
+      "question": "Do you want to compare absolute or relative values?",
+      "options": [
+        { "text": "Absolute values", "next": "bar-chart" },
+        { "text": "Relative values", "next": "stacked-bar-chart" }
+      ]
+    },
+    "time-series": {
+      "question": "Do you want to highlight trends or individual points?",
+      "options": [
+        { "text": "Highlight trends", "next": "line-chart" },
+        { "text": "Highlight individual points", "next": "scatter-plot" }
+      ]
+    },
+    "numerical": {
+      "question": "Are you exploring relationships or distributions?",
+      "options": [
+        { "text": "Relationships", "next": "scatter-plot" },
+        { "text": "Distributions", "next": "histogram" }
+      ]
+    },
+    "bar-chart": {
+      "result": "Recommended Chart: Bar Chart",
+      "description": "Bar charts are great for comparing absolute values across categories."
+    },
+    "stacked-bar-chart": {
+      "result": "Recommended Chart: Stacked Bar Chart",
+      "description": "Stacked bar charts show relative contributions to the total."
+    },
+    "line-chart": {
+      "result": "Recommended Chart: Line Chart",
+      "description": "Line charts are excellent for visualizing trends over time."
+    },
+    "scatter-plot": {
+      "result": "Recommended Chart: Scatter Plot",
+      "description": "Scatter plots are useful for identifying relationships between variables."
+    },
+    "histogram": {
+      "result": "Recommended Chart: Histogram",
+      "description": "Histograms are best for understanding the distribution of numerical data."
+    }
+  }
+  

@@ -35,3 +35,22 @@ code, pre {
     padding-left: 15px;
   }
   
+  .sidebar a {
+    color:#1e2e38;
+    text-decoration: none;
+  }
+
+  .sidebar a:hover {
+    color:#466a82
+  }
+
+  .sidebar a:selected {
+    background-color: #f7c7b5
+  }
+
+  .sidebar h4 {
+    color: #f1572b !important;
+    padding-left: 15px;
+    padding-bottom: 0px;
+    margin-bottom: 0px
+  }

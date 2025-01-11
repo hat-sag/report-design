@@ -1,47 +1,48 @@
+#### [Home](readme.md)
 * Guiding Principles
-  * [Impactful](principles/impactful.md)
-  * [Essential](principles/essential.md)
-  * [Intuitive](principles/intuitive.md)
+  * [Impactful](content/principles/impactful.md)
+  * [Essential](content/principles/essential.md)
+  * [Intuitive](content/principles/intuitive.md)
 
 * Design Foundations
-  * [Color](design-foundations/color.md)
-  * [Typography](design-foundations/typography.md)
-  * [Branding](design-foundations/branding.md)
+  * [Color](content/design-foundations/color.md)
+  * [Typography](content/design-foundations/typography.md)
+  * [Branding](content/design-foundations/branding.md)
 
 * Structure
-  * [Layout](layout/arrangement.md)
-  * [Global Elements](layout/elements.md)
-  * [Spacing](layout/structure.md)
+  * [Layout](content/layout/arrangement.md)
+  * [Global Elements](content/layout/elements.md)
+  * [Spacing](content/layout/structure.md)
 
 * Interactions and Controls
-  * [Progressive Disclosure](interactions/progressive-disclosure.md)
-  * [Implementation](interactions/implementation.md)
-  * [Placement](interactions/placement.md)
-  * [Styling & Affordances](interactions/styling-affordances.md)
+  * [Progressive Disclosure](content/interactions/progressive-disclosure.md)
+  * [Implementation](content/interactions/implementation.md)
+  * [Placement](content/interactions/placement.md)
+  * [Styling & Affordances](content/interactions/styling-affordances.md)
 
 * Data Visualizations
-  * [Selection](visualizations/selection.md)
-  * [Anatomy](visualizations/anatomy.md)
-  * [Advanced Patterns](visualizations/advanced-patterns.md)
+  * [Selection](content/visualizations/selection.md)
+  * [Anatomy](content/visualizations/anatomy.md)
+  * [Advanced Patterns](content/visualizations/advanced-patterns.md)
 
 * Standard Components
-  * [Cards](components/cards.md)
-  * [Tables](components/tables.md)
-  * [Buttons](components/buttons.md)
-  * [Slicers](components/slicers.md)
-  * [Containers & Shadows](components/containers-shadows.md)
+  * [Cards](content/components/cards.md)
+  * [Tables](content/components/tables.md)
+  * [Buttons](content/components/buttons.md)
+  * [Slicers](content/components/slicers.md)
+  * [Containers & Shadows](content/components/containers-shadows.md)
 
 * Writing
-  * [Titling](writing/titling.md)
-  * [Language Guidelines](writing/language.md)
-  * [Formatting](writing/formatting.md)
+  * [Titling](content/writing/titling.md)
+  * [Language Guidelines](content/writing/language.md)
+  * [Formatting](content/writing/formatting.md)
 
 * Resources
-  * [Heuristics](principles/overview.md)
-  * [Checklist](resources/checklist.md)
-  * [Template](resources/template.md)
-  * [Theme](resources/theme.md)
+  * [Heuristics](content/principles/overview.md)
+  * [Checklist](content/resources/checklist.md)
+  * [Template](content/resources/template.md)
+  * [Theme](content/resources/theme.md)
 
 * Appendix
-  * [FAQ](appendix/faq.md)
-  * [Reading](appendix/reading.md)
+  * [FAQ](content/appendix/faq.md)
+  * [Reading](content/appendix/reading.md)

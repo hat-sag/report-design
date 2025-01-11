@@ -6,7 +6,7 @@
 - Ready-to-use templates
 - Practical examples
 
-[Get Started](content/overview.md)
-[GitHub](https://github.com/yourusername/yourrepo)
+[Introduction](readme.md)
+[Quick Start](/content/resources/checklist)
 
 ![background](assets/ripple-pink-2.jpg)
