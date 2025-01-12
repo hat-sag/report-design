@@ -338,6 +338,247 @@
             ]
           }
         ]
+      },
+      {
+        "text": "Distribution",
+        "question": "What aspect of the distribution are you focusing on?",
+        "options": [
+          {
+            "text": "Overall shape",
+            "question": "Are you working with a small or large dataset?",
+            "options": [
+              {
+                "text": "Small dataset",
+                "result": "Histogram",
+                "description": "Visualize how data is spread out across value ranges. For senior living, this could highlight distribution of resident ages or satisfaction scores.",
+                "considerations": [
+                  "For fewer data points, bins can be manually set to show meaningful groupings.",
+                  "Consider interactive hover to see exact bin counts or percentages."
+                ]
+              },
+              {
+                "text": "Large dataset",
+                "result": "Interactive Histogram or Density Plot",
+                "description": "Allows panning or zooming to explore data distribution in detail. Useful for large sets like resident daily activity logs or thousands of service durations.",
+                "considerations": [
+                  "Use dynamic bin sizing or smoothing to manage large data volumes.",
+                  "Add filters to focus on specific segments (e.g., by location or service type)."
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Outliers",
+            "result": "Box Plot",
+            "description": "Highlight median, quartiles, and outliers. Good for seeing if certain facilities or service offerings deviate significantly from normal patterns.",
+            "considerations": [
+              "Useful when comparing distributions across multiple groups (e.g., different facilities).",
+              "Consider grouping or coloring by categories (e.g., level of care) for clarity."
+            ]
+          },
+          {
+            "text": "Detailed group comparison",
+            "result": "Violin Plot",
+            "description": "Displays distribution for each group, showing density as well as outliers. Great for in-depth comparisons among multiple categories, like comparing service usage across departments.",
+            "considerations": [
+              "Might be too complex for quick snapshots; best used in exploratory dashboards.",
+              "Ensure labeling is clear so that stakeholders understand the shape and spread."
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Relationship",
+        "question": "What type of relationship are you exploring?",
+        "options": [
+          {
+            "text": "Correlation between two variables",
+            "result": "Scatter Plot",
+            "description": "Plot two measures to see if there's a relationship. For instance, visualize if resident satisfaction correlates with staffing hours.",
+            "considerations": [
+              "Consider adding a trend line to highlight correlation.",
+              "Include tooltips or markers for outlier points of interest."
+            ]
+          },
+          {
+            "text": "Correlation among many variables",
+            "result": "Correlation Matrix",
+            "description": "Show pairwise correlations across multiple metrics, such as occupancy rates, satisfaction scores, and operational costs.",
+            "considerations": [
+              "Color coding helps quickly spot strong or weak correlations.",
+              "Interactive filtering can help isolate key metrics for deeper analysis."
+            ]
+          },
+          {
+            "text": "Network or hierarchy of relationships",
+            "result": "Network Diagram",
+            "description": "Visualize complex relationships such as referral patterns between facilities or staff collaboration networks.",
+            "considerations": [
+              "Node size or color can represent additional metrics (e.g., number of residents referred).",
+              "Ensure the diagram doesn’t become cluttered with large networks; consider grouping or clustering."
+            ]
+          },
+          {
+            "text": "Patterns in multiple dimensions",
+            "result": "Scatter Plot Matrix",
+            "description": "Compare multiple numeric variables in a grid of scatter plots, such as cost, care hours, and satisfaction.",
+            "considerations": [
+              "Can be overwhelming with too many variables; choose key metrics.",
+              "Interactive brushing/highlighting can help identify patterns or clusters across multiple plots."
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Time Series",
+        "question": "What is your main focus over time?",
+        "options": [
+          {
+            "text": "Single metric trend",
+            "question": "Is the dataset small (few data points) or large (frequent data)?",
+            "options": [
+              {
+                "text": "Small dataset",
+                "result": "Simple Line Chart",
+                "description": "Ideal for monthly or quarterly data to track changes in one metric, such as average occupancy or average length of stay over time.",
+                "considerations": [
+                  "Highlight significant milestones or events (e.g., policy changes).",
+                  "Add data labels for key points if clarity is needed."
+                ]
+              },
+              {
+                "text": "Large dataset",
+                "result": "Interactive Line Chart with Zoom/Pan",
+                "description": "Allows users to navigate dense time series data (e.g., daily or hourly staff hours) with zoom and filters.",
+                "considerations": [
+                  "Use tooltips on hover to get exact values for busy areas.",
+                  "Consider resampling or aggregating data (weekly/monthly) to prevent clutter."
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Multiple metrics or comparisons over time",
+            "question": "How many metrics do you want to track simultaneously?",
+            "options": [
+              {
+                "text": "Few metrics (≤3)",
+                "result": "Multi-Series Line Chart",
+                "description": "Compare up to three trends in one chart (e.g., occupancy rate vs. satisfaction vs. staffing).",
+                "considerations": [
+                  "Use consistent scales or dual axes only if absolutely necessary.",
+                  "Add a clear legend or interactive toggles for metrics."
+                ]
+              },
+              {
+                "text": "Several metrics (>3)",
+                "result": "Small Multiples or Panel Charts",
+                "description": "Place each metric in its own mini-chart for easier comparison (e.g., separate lines for each facility metric).",
+                "considerations": [
+                  "Allows a quick glance across multiple trends without overcrowding a single chart.",
+                  "Use consistent scales across panels for straightforward comparison."
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Discrete events over time",
+            "result": "Timeline or Gantt Chart",
+            "description": "Visualize critical events or phases, like project milestones (new wing construction) or resident transitions (move-in vs. move-out dates).",
+            "considerations": [
+              "Gantt charts help track tasks or phases with start/end dates.",
+              "Timelines are ideal for highlighting key milestones or changes in regulations."
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Ranking",
+        "question": "What is your ranking focus?",
+        "options": [
+          {
+            "text": "Comparing top or bottom performers",
+            "result": "Ordered Bar Chart with Highlight",
+            "description": "Show items sorted by value, highlighting top or bottom performers. For example, ranking facilities by satisfaction scores or occupancy rates.",
+            "considerations": [
+              "Use color or icons to highlight top/bottom categories.",
+              "For large lists, consider adding a search or filter function."
+            ]
+          },
+          {
+            "text": "Comparing performance against a target",
+            "result": "Bullet Chart",
+            "description": "Perfect for quickly seeing how each item measures up to a benchmark (e.g., target occupancy or revenue).",
+            "considerations": [
+              "Keep the design simple: show performance bar, target marker, and possibly qualitative ranges (e.g., poor, good, excellent).",
+              "Useful for monthly or quarterly performance dashboards."
+            ]
+          },
+          {
+            "text": "Large ranking lists",
+            "result": "Interactive Table with Sorting",
+            "description": "If you have many items (e.g., 50+ staff members or residents), use an interactive table allowing sorting and filtering.",
+            "considerations": [
+              "Enable column sorting and search to find specific items quickly.",
+              "Consider conditional formatting (e.g., highlight values above/below average)."
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Spatial",
+        "question": "What geographic aspect are you visualizing?",
+        "options": [
+          {
+            "text": "Regional or statewide data",
+            "question": "Are you focusing on differences by region?",
+            "options": [
+              {
+                "text": "Yes, I'd like to compare regions or states",
+                "result": "Choropleth Map",
+                "description": "Color-coded regions to show differences (e.g., state-level occupancy rates or market penetration).",
+                "considerations": [
+                  "Use a clear color scale to show high-to-low values.",
+                  "For large datasets, consider simplifying boundaries or offering drill-down."
+                ]
+              },
+              {
+                "text": "No, I'd like exact facility locations",
+                "result": "Symbol/Marker Map",
+                "description": "Place markers on the map for each facility or relevant location. Marker size or color can represent key metrics (e.g., facility capacity).",
+                "considerations": [
+                  "Works best when points are not too dense. Otherwise, consider clustering or heatmaps.",
+                  "Tooltips can show additional details on hover."
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Local or address-level data",
+            "question": "How many points or addresses are plotted?",
+            "options": [
+              {
+                "text": "Few (≤50)",
+                "result": "Detailed Marker Map",
+                "description": "Shows each facility or residence individually. Can highlight resident location clusters or specific properties.",
+                "considerations": [
+                  "Adding labels or pop-ups can provide extra details about each location.",
+                  "Be mindful of privacy concerns when mapping exact addresses."
+                ]
+              },
+              {
+                "text": "Many (>50)",
+                "result": "Clustered or Heatmap",
+                "description": "When many points overlap, clustering or a heatmap helps visualize densities (e.g., distribution of referrals or leads).",
+                "considerations": [
+                  "Allow zooming to see more granularity in areas with high point density.",
+                  "Use color gradients or cluster icons to clarify data hotspots."
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   }
+  
