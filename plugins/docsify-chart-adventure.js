@@ -1,5 +1,16 @@
 window.$docsify = window.$docsify || {};
 window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
+  let state = { currentNode: {}, tree: {} };
+
+  // Fetch the JSON configuration file
+  fetch('plugins/chart-adventure-config.json')
+    .then((response) => response.json())
+    .then((config) => {
+      state.tree = config; // Load the hierarchical JSON as the tree
+      state.currentNode = config; // Start at the root
+    })
+    .catch((error) => console.error('Error loading JSON:', error));
+
   hook.beforeEach((content) => {
     // Replace [chart-adventure] shortcode with the plugin container
     return content.replace(/\[chart-adventure\]/g, '<div id="chart-adventure"></div>');
@@ -9,98 +20,64 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
     const adventureContainer = document.getElementById('chart-adventure');
     if (!adventureContainer) return;
 
-    // Initial state
-    const state = {
-      step: 'start',
-      steps: {
-        start: {
-          question: 'What type of data do you have?',
-          options: [
-            { text: 'Categorical data', next: 'categorical' },
-            { text: 'Numerical data', next: 'numerical' },
-            { text: 'Time-series data', next: 'time-series' },
-          ],
-        },
-        categorical: {
-          question: 'Do you want to compare categories or show proportions?',
-          options: [
-            { text: 'Compare categories', next: 'bar-chart' },
-            { text: 'Show proportions', next: 'pie-chart' },
-          ],
-        },
-        numerical: {
-          question: 'Do you want to show distribution or correlation?',
-          options: [
-            { text: 'Distribution', next: 'histogram' },
-            { text: 'Correlation', next: 'scatter-plot' },
-          ],
-        },
-        'time-series': {
-          question: 'Do you want to highlight trends or specific values?',
-          options: [
-            { text: 'Highlight trends', next: 'line-chart' },
-            { text: 'Highlight specific values', next: 'area-chart' },
-          ],
-        },
-        'bar-chart': {
-          result: 'Recommended Chart: Bar Chart',
-          description: 'Use a bar chart to compare categorical data side by side.'
-        },
-        'pie-chart': {
-          result: 'Recommended Chart: Pie Chart',
-          description: 'Use a pie chart to show proportions of a whole.'
-        },
-        histogram: {
-          result: 'Recommended Chart: Histogram',
-          description: 'Use a histogram to show the distribution of numerical data.'
-        },
-        'scatter-plot': {
-          result: 'Recommended Chart: Scatter Plot',
-          description: 'Use a scatter plot to show the relationship between two numerical variables.'
-        },
-        'line-chart': {
-          result: 'Recommended Chart: Line Chart',
-          description: 'Use a line chart to highlight trends in time-series data.'
-        },
-        'area-chart': {
-          result: 'Recommended Chart: Area Chart',
-          description: 'Use an area chart to highlight cumulative values or trends.'
-        },
-      },
-    };
-
     const renderStep = () => {
-      const step = state.steps[state.step];
-      adventureContainer.innerHTML = '';
+      const currentNode = state.currentNode;
+      adventureContainer.innerHTML = ''; // Clear the container
 
-      if (step.result) {
+      if (currentNode.result) {
         // Render result
         const resultElement = document.createElement('h2');
-        resultElement.textContent = step.result;
+        resultElement.textContent = currentNode.result;
+        resultElement.classList.add('result'); // Add CSS class for styling
         adventureContainer.appendChild(resultElement);
 
+        // Render description
         const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = step.description;
+        descriptionElement.textContent = currentNode.description;
+        descriptionElement.classList.add('description'); // Add CSS class for styling
         adventureContainer.appendChild(descriptionElement);
 
+        // Render considerations (if any)
+        if (currentNode.considerations) {
+          const considerationsTitle = document.createElement('h3');
+          considerationsTitle.textContent = "Considerations:";
+          considerationsTitle.classList.add('considerations-title'); // Add CSS class
+          adventureContainer.appendChild(considerationsTitle);
+
+          const considerationsList = document.createElement('ul');
+          considerationsList.classList.add('considerations-list'); // Add CSS class
+          currentNode.considerations.forEach((consideration) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = consideration;
+            listItem.classList.add('consideration-item'); // Add CSS class
+            considerationsList.appendChild(listItem);
+          });
+          adventureContainer.appendChild(considerationsList);
+        }
+
+        // Render restart button
         const restartButton = document.createElement('button');
         restartButton.textContent = 'Restart';
+        restartButton.classList.add('restart'); // Add CSS class for restart-specific styling
         restartButton.onclick = () => {
-          state.step = 'start';
+          state.currentNode = state.tree; // Restart from the root
           renderStep();
         };
         adventureContainer.appendChild(restartButton);
       } else {
-        // Render question and options
+        // Render question
         const questionElement = document.createElement('h2');
-        questionElement.textContent = step.question;
+        questionElement.textContent = currentNode.question;
+        questionElement.classList.add('question'); // Add CSS class for question
         adventureContainer.appendChild(questionElement);
 
-        step.options.forEach((option) => {
+        // Render options as buttons
+        currentNode.options.forEach((option) => {
           const button = document.createElement('button');
           button.textContent = option.text;
+          button.classList.add('option-button'); // Add CSS class for option buttons
           button.onclick = () => {
-            state.step = option.next;
+            state.currentNode = option; // Navigate to the selected option's node
             renderStep();
           };
           adventureContainer.appendChild(button);
@@ -108,6 +85,7 @@ window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
       }
     };
 
-    renderStep();
+    // Initial render
+    if (Object.keys(state.tree).length > 0) renderStep();
   });
 });

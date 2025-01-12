@@ -1,52 +1,343 @@
 {
-    "start": {
-      "question": "What kind of insight are you looking for?",
-      "options": [
-        { "text": "Compare categories", "next": "categorical" },
-        { "text": "Analyze trends over time", "next": "time-series" },
-        { "text": "Explore relationships between variables", "next": "numerical" }
-      ]
-    },
-    "categorical": {
-      "question": "Do you want to compare absolute or relative values?",
-      "options": [
-        { "text": "Absolute values", "next": "bar-chart" },
-        { "text": "Relative values", "next": "stacked-bar-chart" }
-      ]
-    },
-    "time-series": {
-      "question": "Do you want to highlight trends or individual points?",
-      "options": [
-        { "text": "Highlight trends", "next": "line-chart" },
-        { "text": "Highlight individual points", "next": "scatter-plot" }
-      ]
-    },
-    "numerical": {
-      "question": "Are you exploring relationships or distributions?",
-      "options": [
-        { "text": "Relationships", "next": "scatter-plot" },
-        { "text": "Distributions", "next": "histogram" }
-      ]
-    },
-    "bar-chart": {
-      "result": "Recommended Chart: Bar Chart",
-      "description": "Bar charts are great for comparing absolute values across categories."
-    },
-    "stacked-bar-chart": {
-      "result": "Recommended Chart: Stacked Bar Chart",
-      "description": "Stacked bar charts show relative contributions to the total."
-    },
-    "line-chart": {
-      "result": "Recommended Chart: Line Chart",
-      "description": "Line charts are excellent for visualizing trends over time."
-    },
-    "scatter-plot": {
-      "result": "Recommended Chart: Scatter Plot",
-      "description": "Scatter plots are useful for identifying relationships between variables."
-    },
-    "histogram": {
-      "result": "Recommended Chart: Histogram",
-      "description": "Histograms are best for understanding the distribution of numerical data."
-    }
+    "question": "What are you trying to show?",
+    "options": [
+      {
+        "text": "Comparison",
+        "question": "How many categories are you comparing?",
+        "options": [
+          {
+            "text": "One category",
+            "question": "What's the nature of the comparison?",
+            "options": [
+              {
+                "text": "Raw values",
+                "result": "Bar Chart",
+                "description": "Use a bar chart for raw values. Consider horizontal orientation if labels are long. Add data labels if exact values are important."
+              },
+              {
+                "text": "Rankings",
+                "result": "Horizontal Bar Chart (sorted)",
+                "description": "Use a horizontal bar chart, sorted by value. Works best for up to 20-25 items. For more, consider filtering, grouping, or showing top N."
+              },
+              {
+                "text": "vs Benchmark",
+                "result": "Bar Chart with Reference Line",
+                "description": "Use a bar chart with reference line or bullet chart. Consider color coding bars based on whether they exceed the benchmark."
+              }
+            ]
+          },
+          {
+            "text": "Two categories",
+            "question": "Are the categories hierarchical (one contains the other)?",
+            "options": [
+              {
+                "text": "Yes (hierarchical)",
+                "question": "What type of comparison are you making?",
+                "options": [
+                  {
+                    "text": "Comparing within each level",
+                    "question": "How many items at each level?",
+                    "options": [
+                      {
+                        "text": "Few (≤20-25 total)",
+                        "result": "Grouped Bar with Drill-Down",
+                        "description": "Use grouped bars with drill-down capability. Show parent level first, allow drilling to child level comparisons."
+                      },
+                      {
+                        "text": "Many (>25)",
+                        "question": "Can the data be aggregated or filtered?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "result": "Filtered Grouped Bar with Drill-Down",
+                            "description": "Use grouped bars with filters to limit visible items. Consider showing top N with option to see more."
+                          },
+                          {
+                            "text": "No",
+                            "result": "Heatmap with Hierarchy",
+                            "description": "Use a heatmap with hierarchical labels. Consider adding interactive tooltips for exact values."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Showing contribution to parent",
+                    "question": "How many components at child level?",
+                    "options": [
+                      {
+                        "text": "Few (≤6)",
+                        "result": "Stacked Bar with Drill-Down",
+                        "description": "Use stacked bars with drill-down. Color consistently across levels. Consider adding percentage labels."
+                      },
+                      {
+                        "text": "Many (>6)",
+                        "question": "Can small items be grouped?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "result": "Stacked Bar with 'Other'",
+                            "description": "Group smaller items into 'Other' category. Provide drill-down to see full breakdown."
+                          },
+                          {
+                            "text": "No",
+                            "result": "Treemap",
+                            "description": "Use treemap for many items. Add interactive tooltips and ensure color coding is meaningful."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Comparing patterns across levels",
+                    "result": "Small Multiples with Drill-Down",
+                    "description": "Use small multiples showing parent level patterns, with drill-down to child level. Consider adding summary metrics."
+                  }
+                ]
+              },
+              {
+                "text": "No (independent categories)",
+                "question": "What aspect are you comparing?",
+                "options": [
+                  {
+                    "text": "Raw values across both",
+                    "question": "How many total combinations?",
+                    "options": [
+                      {
+                        "text": "Few (≤20-25)",
+                        "result": "Grouped Bar Chart",
+                        "description": "Use grouped bars. Consider sorting by total or one category. Add data labels if space permits."
+                      },
+                      {
+                        "text": "Many (>25)",
+                        "question": "Can data be aggregated?",
+                        "options": [
+                          {
+                            "text": "Yes",
+                            "result": "Aggregated Heatmap",
+                            "description": "Use heatmap with aggregated categories. Provide drill-down for details."
+                          },
+                          {
+                            "text": "No",
+                            "result": "Detailed Heatmap",
+                            "description": "Use heatmap with scroll or filter controls. Consider showing top N by default."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "Proportions/distribution",
+                    "question": "Is one category more important?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "question": "How many components?",
+                        "options": [
+                          {
+                            "text": "Few (≤4)",
+                            "result": "Stacked Bar Chart",
+                            "description": "Use stacked bars. Order segments consistently. Consider adding percentage labels."
+                          },
+                          {
+                            "text": "Many (>4)",
+                            "question": "Can components be grouped?",
+                            "options": [
+                              {
+                                "text": "Yes",
+                                "result": "Stacked Bar with 'Other'",
+                                "description": "Group smaller segments into 'Other'. Provide tooltip or details on demand."
+                              },
+                              {
+                                "text": "No",
+                                "result": "Heatmap",
+                                "description": "Use heatmap showing distribution. Consider adding marginal distributions."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "text": "No (both equally important)",
+                        "question": "How many values in each category?",
+                        "options": [
+                          {
+                            "text": "Few (≤5 each)",
+                            "result": "100% Stacked Bar Chart",
+                            "description": "Use 100% stacked bars. Consider both vertical and horizontal orientations."
+                          },
+                          {
+                            "text": "Many (>5)",
+                            "result": "Heatmap",
+                            "description": "Use heatmap normalized within categories. Add tooltips for exact values."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "Composition",
+        "question": "What aspect of composition matters most?",
+        "options": [
+          {
+            "text": "Part-to-whole relationships",
+            "question": "How many components are you showing?",
+            "options": [
+              {
+                "text": "Few components (≤5)",
+                "question": "Are exact proportions important?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "result": "Bar Chart (100% stacked)",
+                    "description": "Use a 100% stacked bar chart. Add percentage labels. Consider horizontal orientation if labels are long. Works best when precise comparison is needed."
+                  },
+                  {
+                    "text": "No",
+                    "result": "Pie Chart",
+                    "description": "Use a pie chart for a quick visual share of the whole. Order slices by size. Add direct labels if space permits. Best when relative proportions matter more than exact values."
+                  }
+                ]
+              },
+              {
+                "text": "Many components (6-10)",
+                "question": "Can smaller components be grouped?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "result": "Pie Chart with 'Other'",
+                    "description": "Use a pie chart with smaller segments grouped as 'Other'. Add tooltips or details-on-demand for grouped items. Consider showing top N plus Other."
+                  },
+                  {
+                    "text": "No",
+                    "result": "Stacked Bar Chart",
+                    "description": "Use a 100% stacked bar. Consider horizontal orientation for better label readability. Add interactive tooltips for smaller segments."
+                  }
+                ]
+              },
+              {
+                "text": "Very many components (>10)",
+                "question": "Is hierarchy present in the data?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "result": "Treemap",
+                    "description": "Use a treemap to show nested composition. Color by hierarchy level or another meaningful metric. Add interactive tooltips and drill-down capability."
+                  },
+                  {
+                    "text": "No",
+                    "question": "Is interaction possible?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "result": "Interactive Bar Chart",
+                        "description": "Use a scrollable/filterable bar chart. Show top N by default with option to see more. Add search/filter capabilities for specific components."
+                      },
+                      {
+                        "text": "No",
+                        "result": "Grouped Bar Chart",
+                        "description": "Group into meaningful categories. Consider showing as 100% stacked bars with major categories only. Provide full breakdown in tooltip or separate view."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Changes in composition",
+            "question": "How many time periods?",
+            "options": [
+              {
+                "text": "Two periods",
+                "question": "How many components?",
+                "options": [
+                  {
+                    "text": "Few (≤5)",
+                    "result": "Side-by-side Pie Charts",
+                    "description": "Use two pie charts side by side. Maintain consistent ordering and colors. Add delta indicators for significant changes."
+                  },
+                  {
+                    "text": "Many (>5)",
+                    "result": "Stacked Bar Chart",
+                    "description": "Use side-by-side 100% stacked bars. Focus on major changes. Consider adding change indicators or delta chart."
+                  }
+                ]
+              },
+              {
+                "text": "Multiple periods",
+                "question": "How many components?",
+                "options": [
+                  {
+                    "text": "Few (≤5)",
+                    "result": "100% Stacked Area Chart",
+                    "description": "Use a 100% stacked area chart. Consider interactive tooltips for exact values. Add legend with toggles for focus."
+                  },
+                  {
+                    "text": "Many (>5)",
+                    "question": "Can components be grouped?",
+                    "options": [
+                      {
+                        "text": "Yes",
+                        "result": "Grouped 100% Stacked Area",
+                        "description": "Group smaller components. Show major categories in stacked area chart. Provide drill-down for details."
+                      },
+                      {
+                        "text": "No",
+                        "result": "Small Multiples",
+                        "description": "Use small multiple area charts. Show one component per chart. Consider showing only key components with option to see others."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "text": "Nested composition",
+            "question": "How many hierarchy levels?",
+            "options": [
+              {
+                "text": "Two levels",
+                "question": "How many items at each level?",
+                "options": [
+                  {
+                    "text": "Few (≤5 per level)",
+                    "result": "Sunburst Chart",
+                    "description": "Use a sunburst chart. Add interactive highlights for parent-child relationships. Consider adding breadcrumb navigation."
+                  },
+                  {
+                    "text": "Many (>5 per level)",
+                    "result": "Treemap",
+                    "description": "Use a treemap. Color by level or metric. Add interactive drill-down and tooltips. Consider showing only major categories by default."
+                  }
+                ]
+              },
+              {
+                "text": "Multiple levels",
+                "question": "Is interaction available?",
+                "options": [
+                  {
+                    "text": "Yes",
+                    "result": "Interactive Treemap",
+                    "description": "Use an interactive treemap with drill-down. Start with top level, allow exploration. Add breadcrumb navigation and search."
+                  },
+                  {
+                    "text": "No",
+                    "result": "Nested Bar Chart",
+                    "description": "Use nested bars showing 2-3 most important levels. Group minor categories. Provide separate detailed view if needed."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
-  
