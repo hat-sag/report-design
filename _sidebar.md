@@ -15,14 +15,15 @@
   * [Spacing](content/layout/structure.md)
 
 * Interactions and Controls
-  * [Progressive Disclosure](content/interactions/progressive-disclosure.md)
-  * [Implementation](content/interactions/implementation.md)
-  * [Placement](content/interactions/placement.md)
-  * [Styling & Affordances](content/interactions/styling-affordances.md)
+  * [Interactivity: What & Why](content/interactions/progressive-disclosure.md)
+  * [Filtering](content/interactions/implementation.md)
+  * [Toggling](content/interactions/placement.md)
+  * [Navigation](content/interactions/placement.md)
+  * [Styling & Placement](content/interactions/styling-affordances.md)
 
 * Data Visualizations
-  * [Selection](content/visualizations/selection.md)
-  * [Anatomy](content/visualizations/anatomy.md)
+  * [Choosing a chart](content/visualizations/selection.md)
+  * [Styling a chart](content/visualizations/anatomy.md)
   * [Advanced Patterns](content/visualizations/advanced-patterns.md)
 
 * Standard Components
@@ -38,7 +39,6 @@
   * [Formatting](content/writing/formatting.md)
 
 * Resources
-  * [Heuristics](content/principles/overview.md)
   * [Checklist](content/resources/checklist.md)
   * [Template](content/resources/template.md)
   * [Theme](content/resources/theme.md)
