@@ -17,12 +17,12 @@ Charts should be:
 
 ### Column Charts
 
-Column charts should only be used for time-series when:
+Compare data over time. Column charts should only be used for time-series when:
 
-1. **The exact absolute value is more relevant than trend.**
+1. **The exact absolute value is more relevant than trend.**  
     Column charts excel at communicating discrete data points. They emphasize individual data points rather than the connections between them.
     
-2. **There are less than 20 data points.**
+2. **There are less than 20 data points.**  
     A column chart is too dense and difficult to interpret when there are more than 20 data points. Consider using a drilldown dimension to minimize the number of data points and let the user zoom in where they need to. 
 
 
@@ -32,7 +32,7 @@ Column charts should only be used for time-series when:
 
 ### Line Charts
 
-Use line charts to:
+Show trends over time. Use line charts to:
 
 1. **Communicate the trend of a metric**  
     Lines create a continuous path that makes it easier for our brains to follow the direction and pattern of change. The slope instantly communicates the rate of change between points.
@@ -49,7 +49,7 @@ Use line charts to:
 
 ### Area Charts
 
-Use area charts when:
+Emphasize the magnitude of change over time. Use area charts when:
 
 1. **You want to emphasize volume or magnitude**  
     The filled space below the line creates a stronger visual emphasis on the total size or quantity of the metric, making it feel more substantial and weighty.
@@ -63,6 +63,11 @@ Use area charts when:
 4. **You have relatively smooth data**  
     Sharp spikes and dips can create awkward-looking shapes in area charts, so they work better with smoother trends.
     
+### Combo Charts
+
+Show correlation over time.
+
+1. 
 
 ### Ribbon Charts
 
@@ -85,7 +90,7 @@ Use ribbon charts when:
 
 ### Pie Charts
 
-Use pie charts when:
+Show the relationship of parts to the whole or highlight proportions. Use pie charts when:
 
 1. **You have 6 or fewer categories**  
 More slices make it hard for humans to compare angles accurately.
@@ -111,7 +116,7 @@ Treemaps can effectively show both very large and very small values in the same 
 
 ### Stacked Bar Charts
 
-Use stacked bars when:
+Show the parts that contribute to the total and compare change over time. Use stacked bars when:
 
 1. **You want to show both absolute size AND composition**  
 Unlike pie charts which only show proportions, stacked bars can show both the total size and the breakdown of components.
@@ -133,7 +138,15 @@ Thin segments become hard to see and even harder to compare.
 3. **Precise comparisons are needed**  
 Consider using grouped bars instead if exact comparisons between categories are important.
 
-## Comparison and Ranking
-> Applies just to categorical comparisons. For comparisons over time, see the time-series section.
+### Area Charts
 
-### Horizontal Bars
+## Magnitude
+
+### Bar Chart
+
+### Grouped Bar Chart
+
+### Heatmap
+
+## Correlation
+### Scatter Plot / Bubble Chart
