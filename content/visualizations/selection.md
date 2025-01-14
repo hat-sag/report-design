@@ -1,118 +1,139 @@
-# Selecting visualization content and type
+# Chart Selection
+> Before selecting a chart, you must first determine what kind of insight you want to communicate. What should the takeaway be? What story are you telling using the data?
 
+Charts should be:
 
-## Comparisons
-### Categorical
-```mermaid
-flowchart TD
-    Start[Categorical Comparison] --> Categories{How many categories?}
-    Categories -->|One| Single[Single Category]
-    Categories -->|Two| Hierarchical{Are they hierarchical?}
+1. **Impactful**  
+    Choose insights that will directly influence your audience's decisions or change their understanding of an important issue.
     
-    Single --> SingleNature{Nature of comparison}
-    SingleNature -->|Raw values| Bar[Bar Chart]
-    SingleNature -->|Rankings| HBar[Horizontal Bar<br>sorted by value]
-    SingleNature -->|vs Benchmark| BBar[Bar Chart with<br>reference line]
+2. **Intuitive**  
+    Select insights where visualization will make the pattern or relationship immediately clear.
     
-    Hierarchical -->|No| NonHier{What to compare?}
-    Hierarchical -->|Yes| HierType{Type of comparison?}
+3. **Essential**  
+    Focus on the single most important finding that your audience needs to grasp.
     
-    NonHier -->|Raw values| Space{Fits in space?<br><20-25 items?}
-    Space -->|Yes| Grouped[Grouped Bar]
-    Space -->|No| Heat1[Heatmap]
+
+## Time-Series Visualizations
+
+### Column Charts
+
+Column charts should only be used for time-series when:
+
+1. **The exact absolute value is more relevant than trend.**
+    Column charts excel at communicating discrete data points. They emphasize individual data points rather than the connections between them.
     
-    NonHier -->|Proportions| Primary{One category<br>more important?}
-    Primary -->|Yes| Stack{≤4 components?}
-    Stack -->|Yes| Stacked[Stacked Bar]
-    Stack -->|No| Solutions{Can simplify?}
-    Solutions -->|Group as Other| Stacked
-    Solutions -->|Can't simplify| Heat2[Heatmap]
+2. **There are less than 20 data points.**
+    A column chart is too dense and difficult to interpret when there are more than 20 data points. Consider using a drilldown dimension to minimize the number of data points and let the user zoom in where they need to. 
+
+
     
-    Primary -->|No| Stack100{≤5 values?}
-    Stack100 -->|Yes| Stacked100[100% Stacked Bar]
-    Stack100 -->|No| Heat3[Heatmap]
+   > When working with grouped bar charts, this rule still applies. Two bars for every month of a year still impacts readability and time-to-insights.
     
-    HierType -->|Within level| DrillBar[Grouped Bar<br>with drill-down]
-    HierType -->|Contribution| StackCheck{≤6 components?}
-    StackCheck -->|Yes| DrillStack[Stacked Bar<br>with drill-down]
-    StackCheck -->|No| Tree[Treemap]
-    HierType -->|Patterns| Small[Small Multiples<br>with drill-down]
 
-    subgraph Fallbacks [When limits reached]
-        direction TB
-        Back1[Return to start] -.-> Back2[Consider:] -.-> Back3[Aggregation] -.-> Back4[Filtering] -.-> Back5[Multiple views]
-    end
+### Line Charts
 
-```
+Use line charts to:
 
-
-
-
-
-
-
-
-
-
-
-
-> **Bar, column, and line charts are the easiest to understand.** We will try to use these where possible. Alternative chart types may be used when report pages are too bar chart heavy.
-
-## **By data relationship**
-
-Frequent stories (data relationships) used for Insights reports include ranking, magnitude, part to whole, and change over time.
-
-| Relationship | Purpose | Chart to Use | Dealing with Multiples | Color Note |
-| --- | --- | --- | --- | --- |
-| Ranking | Show an item's position in an ordered list | Standard horizontal bar | Grouped | A diverging palette works well |
-| Magnitude | Show size comparisons | Standard bar - horizontal for longer dimension labels | Grouped | A sequential palette works well |
-| Part to Whole | Show how a single entity can be broken down into its component elements | Pie chart (if less than 5), bar chart | Treemap (if not too many categories), stacked bar (if not too many subcategories), area chart (over time) | A categorical palette works well |
-| Change over Time | Give emphasis to changing trends | Line chart | Shouldn't exceed three intersecting lines -- break out the chart | Single color, multicolored if more than one measure or dimension |
-
-## **Details**
-
-| Chart Type | When to Use | Notes |
-| --- | --- | --- |
-
-| Chart Type | When to Use | Notes |
-| --- | --- | --- |
-| Table | When you need to compare or look up individual values; require precise values; values involve multiple units of measure; and data has to communicate quantitative information but not trends. | Consider using sparklines to communicate changes in trend. |
-| Vertical Bar (Column) | To compare different values when specific values are important and users will look up and compare individual values between each column. | Use for small number of categories (up to five, but not more than seven). Only show trends if there are a reasonably low number of data points (less than 20) and if every data point has a clearly visible value. |
-| Stacked Column | To show a composition. | Don't use too many composition items (not more than three or four). |
-| Bar | When category names are long or number of categories is greater than seven. |  |
-| Stacked Bar | To show changes in composition. | Discouraged, unless there are only a few composition parts and the emphasis is on composition, not comparison. |
-| Line | When you have a continuous data set and want to show trends based on data over a period of time. | Suited for high number of data points (more than 20). Emphasis is on continuation or flow of values (trend), but still some support for single value comparisons using data markers (with less than 20 data points). |
-| Area | To present accumulative value changes over time. | Don't use for highly fluctuating values. |
-| Stacked Area | To show changes in composition over time. | Don't use for exact comparison or if stacking more than three to five categories. |
-| Donut (used instead of pie) | To visualize a part-to-whole relationship or a composition. | Use only for less than six categories or if there's a clear winner to focus on. Total sum of all segments should equal 100 percent. Not for individual comparisons or exact values. |
-| Scatter | For correlation and distribution analysis. | Use to show relationships between two or three numerical variables, patterns in large data sets, correlations, clusters, or outliers. Not for exact comparisons. |
-| Gauge | To show progress toward a goal, represent a percentile measure, show an exact value and meaning of a single measure, or display a single bit of information. |  |
-| Combo | To display a line chart and a column chart with the same X-axis, compare multiple measures with different value ranges, or illustrate the relationship between measures. | Not for exact comparisons. |
-| Treemap | To visualize hierarchical data structure and show the proportion of each branch in the hierarchy. | Suitable for showing the hierarchical structure of data and the relationship between data points at different levels. |
-| KPI | To display key performance indicators (metrics that measure success) and show how they are performing relative to a target or benchmark. | Use to quickly communicate the current status of an important metric or to track progress toward a goal. |
-
-```mermaid
-graph TD
-    A[Start: What do you want to show?] --> B{Comparison or Relationship?}
-    B -->|Comparison| C{How many metrics?}
-    B -->|Relationship| D{What type?}
+1. **Communicate the trend of a metric**  
+    Lines create a continuous path that makes it easier for our brains to follow the direction and pattern of change. The slope instantly communicates the rate of change between points.
     
-    C -->|1-3 metrics| E{Time-based?}
-    C -->|4+ metrics| F{Can insights still be discerned?}
+2. **Encode a large amount of data points**  
+    Line charts can handle many more data points than columns while remaining readable. The connected points create a clear visual path even when data points are densely packed.
     
-    F -->|No| G[Restructure Data]
-    F -->|Yes| H{Is this explicitly requested<br/>or a details view?}
+3. **Show continuous data**  
+    When your data represents a continuous measure where interpolation between points makes sense, lines better represent the continuous nature of the measurement.
     
-    H -->|No| I[Simplify or Break Down]
-    H -->|Yes| J[Use Table with Clear<br/>Hierarchy/Grouping]
+4. **Compare multiple series over time**  
+    Multiple lines can overlap while remaining distinct and readable. The continuous nature of lines makes it easy to spot relationships, convergence, and divergence between different metrics.
     
-    E -->|Yes| K[Line/Area Chart]
-    E -->|No| L[Bar/Column Chart]
+
+### Area Charts
+
+Use area charts when:
+
+1. **You want to emphasize volume or magnitude**  
+    The filled space below the line creates a stronger visual emphasis on the total size or quantity of the metric, making it feel more substantial and weighty.
     
-    D -->|Correlation| M[Scatter Plot]
-    D -->|Distribution| N[Histogram/Box Plot]
-    D -->|Part-to-Whole| O[Pie/Donut if <6 parts<br/>Otherwise Bar]
+2. **Showing part-to-whole relationships over time**  
+    Stacked area charts are excellent for showing how different components contribute to a total, while still maintaining the ability to see the overall trend.
     
-    G --> P[Return to Start]
-    I --> P
-```
+3. **Data doesn't have too many crossovers**  
+    When multiple series frequently cross each other, area charts can become visually confusing as the fills obscure each other.
+    
+4. **You have relatively smooth data**  
+    Sharp spikes and dips can create awkward-looking shapes in area charts, so they work better with smoother trends.
+    
+
+### Ribbon Charts
+
+Use ribbon charts when:
+
+1. **Showing rank changes over time**  
+    Ribbon charts excel at showing how different categories change rank position over time while maintaining their identity through consistent colors.
+    
+2. **The absolute values are less important than relative position**  
+    The focus is on the ordering and movement between positions rather than the exact values of the metric.
+    
+3. **Tracking a limited number of categories**  
+    Like grouped bars, ribbon charts work best with 2-7 categories. Too many ribbons become visually overwhelming.
+    
+4. **There are meaningful position changes**  
+    If ranks rarely change, a regular line or area chart might be more appropriate.
+    
+
+## Part-to-Whole
+
+### Pie Charts
+
+Use pie charts when:
+
+1. **You have 6 or fewer categories**  
+More slices make it hard for humans to compare angles accurately.
+2. **Categories sum to a meaningful total**  
+The whole pie should represent something meaningful, like 100% of market share or total budget.
+3. **At least one component is substantially different**  
+If all slices are similar sizes, other charts will be more effective.
+4. **Exact comparisons aren't critical**  
+Humans are poor at comparing angles precisely, so pie charts work better when rough proportions are sufficient.
+
+### Treemaps
+
+Use treemaps when:
+
+1. **You have many categories (>10)**  
+Treemaps can handle many more categories than pie charts while remaining readable.
+2. **You have hierarchical data**  
+The nested rectangle structure works well for showing multiple levels of categorization.
+3. **Space efficiency is important**  
+Treemaps make very efficient use of space compared to other part-to-whole visualizations.
+4. **The data has widely varying magnitudes**  
+Treemaps can effectively show both very large and very small values in the same view.
+
+### Stacked Bar Charts
+
+Use stacked bars when:
+
+1. **You want to show both absolute size AND composition**  
+Unlike pie charts which only show proportions, stacked bars can show both the total size and the breakdown of components.
+2. **You have 3-8 categories to stack**  
+More than 8 stacks become hard to read, especially for segments not aligned to the baseline.
+3. **The order of stacks is meaningful**  
+The position in the stack should follow a logical order (e.g., funnel stages from top to bottom, or risk levels from high to low).
+4. **The bottom (base) category is the most important**  
+Only the bottom segment can be easily compared across bars since it's aligned to the axis.
+5. **Seeing the total is as important as seeing the parts**  
+The full height of the bar gives an immediate sense of the total, while the segments show composition.
+
+Avoid stacked bars when:
+
+1. **You need to compare non-baseline segments**  
+Segments not aligned to the baseline are hard to compare across bars since they have different starting points.
+2. **The data has many small values**  
+Thin segments become hard to see and even harder to compare.
+3. **Precise comparisons are needed**  
+Consider using grouped bars instead if exact comparisons between categories are important.
+
+## Comparison and Ranking
+> Applies just to categorical comparisons. For comparisons over time, see the time-series section.
+
+### Horizontal Bars
