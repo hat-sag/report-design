@@ -1,30 +1,37 @@
-# Typography
+# Chart Selection
 
-> Hierarchy, font choices, acronyms
+Choose the right visualization based on what you need to show.
 
 <!-- card-grid -->
-<!-- card {"variant": "primary", "tags": ["Font Family", "Base"]} -->
-#### Plus Jakarta Sans
-The primary font for all body text and UI elements. A modern, highly readable sans-serif that works well across platforms.
+<!-- card {"variant": "primary", "tags": ["Performance", "Comparison"]} -->
+#### Showing Performance
+Compare metrics across categories, track against targets, and highlight exceptions. Perfect for sales dashboards, KPI tracking, and performance analysis.
+
+[Click for details](#performance)
 <!-- end-card -->
 
-<!-- card {"variant": "info", "tags": ["Font Family", "Code"]} -->
-#### Inconsolata
-Our monospace font, carefully chosen for terminal outputs and technical documentation.
+<!-- card {"variant": "info", "tags": ["Trends", "Time Series"]} -->
+#### Showing Change
+Track metrics over time, visualize growth patterns, and highlight temporal trends. Ideal for trend analysis, forecasting, and time-based comparisons.
+
+[Click for details](/visualizations/selection?id=time-series-visualizations)
 <!-- end-card -->
 
-<!-- card {"variant": "success", "tags": ["Best Practices"]} -->
-#### Font Size Hierarchy
-- Headers: 32px/24px/20px
-- Body: 16px
-- Small text: 14px
-- Micro text: 12px
-<!-- end-card -->
+<!-- card {"variant": "success", "tags": ["Structure", "Hierarchy"]} -->
+#### Showing Relationships
+Reveal connections between metrics, display hierarchical data, and show part-to-whole relationships. Great for organizational structures and market segmentation.
 
-<!-- card {"variant": "warning", "tags": ["Accessibility", "WCAG"]} -->
-#### Accessibility Guidelines
-- Maintain minimum contrast ratio of 4.5:1
-- Use relative units (rem) for scalability
-- Avoid all-caps for body text
+[Click for details](#relationships)
 <!-- end-card -->
 <!-- end-card-grid -->
+
+# Detailed Guides
+
+## Performance {#performance}
+(Detailed content here...)
+
+## Change {#change}
+(Detailed content here...)
+
+## Relationships {#relationships}
+(Detailed content here...)
