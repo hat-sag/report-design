@@ -1,91 +1,124 @@
 window.$docsify = window.$docsify || {};
 window.$docsify.plugins = (window.$docsify.plugins || []).concat((hook, vm) => {
-  let state = { currentNode: {}, tree: {} };
+  let state = { 
+    currentNode: null, 
+    tree: null,
+    history: []
+  };
 
-  // Fetch the JSON configuration file
-  fetch('plugins/chart-adventure-config.json')
-    .then((response) => response.json())
-    .then((config) => {
-      state.tree = config; // Load the hierarchical JSON as the tree
-      state.currentNode = config; // Start at the root
-    })
-    .catch((error) => console.error('Error loading JSON:', error));
+  // Initialize plugin when the script is loaded
+  hook.init(() => {
+    fetch('plugins/chart-adventure-config.json')
+      .then(response => response.json())
+      .then(config => {
+        state.tree = config;
+        state.currentNode = config;
+      })
+      .catch(error => console.error('Error loading chart adventure config:', error));
+  });
 
+  // Replace shortcode with container before parsing markdown
   hook.beforeEach((content) => {
-    // Replace [chart-adventure] shortcode with the plugin container
-    return content.replace(/\[chart-adventure\]/g, '<div id="chart-adventure"></div>');
+    return content.replace(/\[chart-adventure\]/g, '<div id="chart-adventure" class="markdown-section"></div>');
   });
 
+  // Render the adventure after DOM is ready
   hook.doneEach(() => {
-    const adventureContainer = document.getElementById('chart-adventure');
-    if (!adventureContainer) return;
-
-    const renderStep = () => {
-      const currentNode = state.currentNode;
-      adventureContainer.innerHTML = ''; // Clear the container
-
-      if (currentNode.result) {
-        // Render result
-        const resultElement = document.createElement('h2');
-        resultElement.textContent = currentNode.result;
-        resultElement.classList.add('result'); // Add CSS class for styling
-        adventureContainer.appendChild(resultElement);
-
-        // Render description
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = currentNode.description;
-        descriptionElement.classList.add('description'); // Add CSS class for styling
-        adventureContainer.appendChild(descriptionElement);
-
-        // Render considerations (if any)
-        if (currentNode.considerations) {
-          const considerationsTitle = document.createElement('h3');
-          considerationsTitle.textContent = "Considerations:";
-          considerationsTitle.classList.add('considerations-title'); // Add CSS class
-          adventureContainer.appendChild(considerationsTitle);
-
-          const considerationsList = document.createElement('ul');
-          considerationsList.classList.add('considerations-list'); // Add CSS class
-          currentNode.considerations.forEach((consideration) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = consideration;
-            listItem.classList.add('consideration-item'); // Add CSS class
-            considerationsList.appendChild(listItem);
-          });
-          adventureContainer.appendChild(considerationsList);
-        }
-
-        // Render restart button
-        const restartButton = document.createElement('button');
-        restartButton.textContent = 'Restart';
-        restartButton.classList.add('restart'); // Add CSS class for restart-specific styling
-        restartButton.onclick = () => {
-          state.currentNode = state.tree; // Restart from the root
-          renderStep();
-        };
-        adventureContainer.appendChild(restartButton);
-      } else {
-        // Render question
-        const questionElement = document.createElement('h2');
-        questionElement.textContent = currentNode.question;
-        questionElement.classList.add('question'); // Add CSS class for question
-        adventureContainer.appendChild(questionElement);
-
-        // Render options as buttons
-        currentNode.options.forEach((option) => {
-          const button = document.createElement('button');
-          button.textContent = option.text;
-          button.classList.add('option-button'); // Add CSS class for option buttons
-          button.onclick = () => {
-            state.currentNode = option; // Navigate to the selected option's node
-            renderStep();
-          };
-          adventureContainer.appendChild(button);
-        });
-      }
-    };
-
-    // Initial render
-    if (Object.keys(state.tree).length > 0) renderStep();
+    const container = document.getElementById('chart-adventure');
+    if (container && state.currentNode) {
+      renderStep(container);
+    }
   });
+
+  const renderStep = (container) => {
+    if (!state.currentNode) return;
+    
+    container.innerHTML = '';
+
+    // Add navigation buttons container
+    const navigationContainer = document.createElement('div');
+    navigationContainer.classList.add('navigation-container');
+
+    // Add back button if we have history
+    if (state.history.length > 0) {
+      const backButton = document.createElement('button');
+      backButton.textContent = '← Back';
+      backButton.classList.add('back-button');
+      backButton.onclick = () => {
+        state.currentNode = state.history.pop();
+        renderStep(container);
+      };
+      navigationContainer.appendChild(backButton);
+    }
+
+    container.appendChild(navigationContainer);
+
+    if (state.currentNode.result) {
+      // Render result
+      const resultElement = document.createElement('h2');
+      resultElement.textContent = state.currentNode.result;
+      resultElement.classList.add('result');
+      container.appendChild(resultElement);
+
+      if (state.currentNode.description) {
+        const descriptionElement = document.createElement('p');
+        descriptionElement.textContent = state.currentNode.description;
+        descriptionElement.classList.add('description');
+        container.appendChild(descriptionElement);
+      }
+
+      if (state.currentNode.considerations) {
+        const considerationsTitle = document.createElement('h3');
+        considerationsTitle.textContent = "Considerations:";
+        considerationsTitle.classList.add('considerations-title');
+        container.appendChild(considerationsTitle);
+
+        const considerationsList = document.createElement('ul');
+        considerationsList.classList.add('considerations-list');
+        state.currentNode.considerations.forEach((consideration) => {
+          const listItem = document.createElement('li');
+          listItem.textContent = consideration;
+          listItem.classList.add('consideration-item');
+          considerationsList.appendChild(listItem);
+        });
+        container.appendChild(considerationsList);
+      }
+
+      // Render restart button
+      const restartButton = document.createElement('button');
+      restartButton.textContent = 'Restart';
+      restartButton.classList.add('restart');
+      restartButton.onclick = () => {
+        state.currentNode = state.tree;
+        state.history = [];
+        renderStep(container);
+      };
+      container.appendChild(restartButton);
+    } else if (state.currentNode.question) {
+      // Render question
+      const questionElement = document.createElement('h2');
+      questionElement.textContent = state.currentNode.question;
+      questionElement.classList.add('question');
+      container.appendChild(questionElement);
+
+      // Create options container
+      const optionsContainer = document.createElement('div');
+      optionsContainer.classList.add('options-container');
+      
+      // Render options
+      state.currentNode.options.forEach((option) => {
+        const button = document.createElement('button');
+        button.textContent = option.text;
+        button.classList.add('option-button');
+        button.onclick = () => {
+          state.history.push(state.currentNode);
+          state.currentNode = option;
+          renderStep(container);
+        };
+        optionsContainer.appendChild(button);
+      });
+      
+      container.appendChild(optionsContainer);
+    }
+  };
 });
