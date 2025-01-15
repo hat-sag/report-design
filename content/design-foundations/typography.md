@@ -3,35 +3,21 @@
 Choose the right visualization based on what you need to show.
 
 <!-- card-grid -->
-<!-- card {"variant": "primary", "tags": ["Performance", "Comparison"]} -->
-#### Showing Performance
-Compare metrics across categories, track against targets, and highlight exceptions. Perfect for sales dashboards, KPI tracking, and performance analysis.
-
-[Click for details](#performance)
+<!-- card {"variant": "navy", "type": "composition", "tags": [{"label": "Static proportions", "href": "#static"}, {"label": "Compositional change", "href": "#change"}]} -->
+#### Composition
+**How parts make up the whole.**  
+Shows proportions and breakdowns of total values. Static, within a hierarchy, or over time.
 <!-- end-card -->
 
-<!-- card {"variant": "info", "tags": ["Trends", "Time Series"]} -->
-#### Showing Change
-Track metrics over time, visualize growth patterns, and highlight temporal trends. Ideal for trend analysis, forecasting, and time-based comparisons.
-
-[Click for details](/visualizations/selection?id=time-series-visualizations)
+<!-- card {"variant": "blue", "type": "comparison", "tags": [{"label": "Categorical", "href": "#categorical"}, {"label": "Time based", "href": "#time"}]} -->
+#### Comparison
+**How values differ across categories or time.**  
+Shows differences between distinct items or periods. Includes trends, magnitude, and performance insights.
 <!-- end-card -->
 
-<!-- card {"variant": "success", "tags": ["Structure", "Hierarchy"]} -->
-#### Showing Relationships
-Reveal connections between metrics, display hierarchical data, and show part-to-whole relationships. Great for organizational structures and market segmentation.
-
-[Click for details](#relationships)
+<!-- card {"variant": "green", "type": "correlation", "tags": [{"label": "Variable", "href": "#variable"}, {"label": "Time based", "href": "#time-correlation"}]} -->
+#### Correlation
+**How variables interact with each other.**  
+Shows connections and patterns between multiple measures.
 <!-- end-card -->
 <!-- end-card-grid -->
-
-# Detailed Guides
-
-## Performance {#performance}
-(Detailed content here...)
-
-## Change {#change}
-(Detailed content here...)
-
-## Relationships {#relationships}
-(Detailed content here...)

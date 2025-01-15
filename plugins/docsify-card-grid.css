@@ -1,111 +1,112 @@
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
     gap: 1.5rem;
     padding: 1rem;
     margin: 1rem 0;
   }
-
+  
   .card {
     background: var(--card-background-color, #ffffff);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
     overflow: hidden;
     border: 1px solid var(--card-border-color, #eaecef);
     height: 100%;
-    cursor: pointer;
-    position: relative;
-    padding-bottom: 2.5rem; /* Space for the "View Details" element */
-    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
-
-.card::after {
-    content: "View Details →";
-    position: absolute;
-    bottom: 1rem;
-    right: 1.5rem;
-    font-size: 0.875rem;
-    color: var(--theme-color, #42b983);
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.card:hover::after {
-    opacity: 1;
-}
-
+  
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
-
+  
   /* Card variants */
-  .card[data-variant="primary"] {
-    border-top: 4px solid var(--theme-color, #42b983);
+  .card[data-variant="navy"] {
+    border-top: 4px solid #334155;
   }
-
-  .card[data-variant="info"] {
-    border-top: 4px solid #0088cc;
+  
+  .card[data-variant="blue"] {
+    border-top: 4px solid #3b82f6;
   }
-
-  .card[data-variant="warning"] {
-    border-top: 4px solid #f1b70e;
+  
+  .card[data-variant="green"] {
+    border-top: 4px solid #10b981;
   }
-
-  .card[data-variant="success"] {
-    border-top: 4px solid #42b983;
-  }
-
-  .card[data-variant="danger"] {
-    border-top: 4px solid #ed4014;
-  }
-
+  
   .card-content {
     padding: 1.5rem;
-    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
-
+  
+  .card-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;  /* Reduced from 0.5rem */
+    color: var(--theme-color, #42b983);
+  }
+  
   .card-title {
-    margin: 0 0 0.75rem;
+    margin: 0 0 8px;    /* Reduced from 0.25rem */
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-color-base, #2c3e50);
-    border: none;
   }
-
+  
   .card-description {
-    margin: 0;
+    margin: 0;              /* Removed margin entirely */
     color: var(--text-color-secondary, #666);
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    flex-grow: 1;
   }
-
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding-top: 1rem;
+  
+  /* Add some space between first paragraph and additional description */
+  .card-description + .card-description {
+    margin-top: 8px;
+  }
+  
+  .list-group {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
     border-top: 1px solid var(--card-border-color, #eaecef);
+    margin-top: auto;
   }
-
-  .card-tag {
-    padding: 0.25rem 0.5rem;
-    background: var(--card-tag-bg, #f0f0f0);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    color: var(--text-color-secondary, #666);
-    background: var(--theme-color, #42b983);
-    color: white;
-    font-weight: 500;
-    opacity: 0.9;
+  
+  .list-group-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--card-border-color, #eaecef);
   }
-
-  /* Ensure cards don't appear in sidebar */
-  .sidebar .card-grid {
-    display: none;
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
+  
+  .list-group-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color-base, #2c3e50);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .list-group-link:hover {
+    color: var(--theme-color, #42b983);
+  }
+  
+  .chevron-right {
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  
+  .list-group-link:hover .chevron-right {
+    opacity: 0.7;
+  }
+  
