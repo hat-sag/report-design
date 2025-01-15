@@ -1,6 +1,6 @@
 (function () {
-  const cardGridPlugin = function(hook, vm) {
-    hook.beforeEach(function(content) {
+  const cardGridPlugin = function (hook, vm) {
+    hook.beforeEach(function (content) {
       return content.replace(/<!-- card-grid -->([\s\S]*?)<!-- end-card-grid -->/g, (match, gridContent) => {
         const cards = [];
         const cardRegex = /<!-- card(?:\s+(\{.*?\}))?\s*-->([\s\S]*?)<!-- end-card -->/g;
@@ -23,12 +23,11 @@
                           <circle cx="8" cy="18" r="2"/>
                         </svg>`
         };
-        
 
         while ((cardMatch = cardRegex.exec(gridContent))) {
           const [_, cardOptions, cardContent] = cardMatch;
           let options = {};
-          
+
           if (cardOptions) {
             try {
               options = JSON.parse(cardOptions);
@@ -46,15 +45,14 @@
                   <ul class="list-group">
                     ${options.tags.map(tag => `
                       <li class="list-group-item">
-                        <a href="${tag.href}" class="list-group-link">
-                          <div class="tag-content">
-                            <div class="tag-wrapper">
-                              <strong class="tag-label">${tag.label}</strong>
-                              ${tag.question ? `<span class="tag-question">${tag.question}</span>` : ''}
-                            </div>
+                        ${vm.compiler.compile(tag.link)}
+                        <div class="tag-content">
+                          <div class="tag-wrapper">
+                            <strong class="tag-label">${tag.label}</strong>
+                            ${tag.question ? `<span class="tag-question">${tag.question}</span>` : ''}
                           </div>
-                          <span class="chevron-right"></span>
-                        </a>
+                        </div>
+                        <span class="chevron-right"></span>
                       </li>
                     `).join('')}
                   </ul>

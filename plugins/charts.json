@@ -1,0 +1,349 @@
+{
+  "categories": [
+    {
+      "title": "Composition",
+      "subCategories": [
+        {
+          "title": "Static",
+          "charts": [
+            {
+              "name": "Pie Chart",
+              "subtitle": "Basic breakdown",
+              "use": [
+                "Fewer than 6 slices",
+                "Summing to a meaningful total (e.g., 100%)",
+                "Exact comparison between slices is not critical"
+              ],
+              "avoid": [
+                "All slices are similar size (hard to compare)",
+                "You have many small categories"
+              ]
+            },
+            {
+              "name": "Treemap",
+              "subtitle": "Many categories",
+              "use": [
+                "More than ~10 categories",
+                "Hierarchical data (nested structure)",
+                "Space efficiency is important"
+              ],
+              "avoid": [
+                "You need precise comparisons of each segment’s size"
+              ]
+            },
+            {
+              "name": "Stacked Bar Chart",
+              "subtitle": "Ranked parts",
+              "use": [
+                "Showing both total size and composition",
+                "You have 3–8 categories to stack",
+                "Order of stacks follows a logical sequence"
+              ],
+              "avoid": [
+                "Need to compare non-baseline segments accurately",
+                "Data has many small or thin segments"
+              ]
+            },
+            {
+              "name": "100% Stacked Bar",
+              "subtitle": "Simple share",
+              "use": [
+                "Proportions within each bar must total exactly 100%",
+                "Tracking part-to-whole across a few categories"
+              ],
+              "avoid": [
+                "You need to see absolute values and not just percentages"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Hierarchy",
+          "charts": [
+            {
+              "name": "Treemap",
+              "subtitle": "Basic hierarchy",
+              "notes": [
+                "Same considerations as above",
+                "Particularly useful for multiple levels of nested data"
+              ]
+            },
+            {
+              "name": "Sunburst Chart (If supported)",
+              "subtitle": "Drill-down",
+              "notes": [
+                "Keep it simple—same rationale as treemap for hierarchical data"
+              ]
+            },
+            {
+              "name": "Stacked Bar (with grouping)",
+              "subtitle": "Simple levels",
+              "notes": [
+                "Show subcategories within main categories",
+                "Useful if you have limited layers and want quick comparisons"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Over Time",
+          "charts": [
+            {
+              "name": "100% Stacked Column Chart",
+              "subtitle": "Changing shares",
+              "use": [
+                "Tracking how proportions change over time",
+                "Total always represents 100%"
+              ]
+            },
+            {
+              "name": "Stacked Column Chart",
+              "subtitle": "Absolute changes",
+              "use": [
+                "Both the total and the breakdown of the total matter over periods",
+                "Fewer than ~8 segments in each stack"
+              ]
+            },
+            {
+              "name": "Stacked Area Chart",
+              "subtitle": "Multiple periods",
+              "use": [
+                "Emphasizing the magnitude (volume) over time",
+                "Seeing how parts contribute to a total trend"
+              ],
+              "avoid": [
+                "Many frequent crossovers between categories (fills get confusing)",
+                "Very spiky data that makes the area shape awkward"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Comparisons",
+      "subCategories": [
+        {
+          "title": "Between Items",
+          "charts": [
+            {
+              "name": "Bar Chart (Vertical or Horizontal)",
+              "subtitle": "Simple comparison",
+              "use": [
+                "Comparing discrete categories or ranked items",
+                "Emphasizing the size differences clearly"
+              ],
+              "avoid": [
+                "Over 20–30 categories (may need a different approach or scrolling)"
+              ]
+            },
+            {
+              "name": "Clustered (Grouped) Bar Chart",
+              "subtitle": "Multiple measures",
+              "use": [
+                "Comparing subgroups within main categories",
+                "Number of groups and subgroups is manageable (avoid overload)"
+              ]
+            },
+            {
+              "name": "Column Chart",
+              "subtitle": "Few items",
+              "notes": [
+                "Similar to bar chart but vertical—useful for small sets",
+                "Don’t clutter with too many data points"
+              ]
+            },
+            {
+              "name": "Horizontal Bar Chart",
+              "subtitle": "Many items",
+              "notes": [
+                "Easier to read long category labels",
+                "Better for large sets"
+              ]
+            },
+            {
+              "name": "Sorted Bar Chart",
+              "subtitle": "Ranked items",
+              "notes": [
+                "Sort bars ascending or descending for quick scanning of top/bottom performers"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Over Time",
+          "charts": [
+            {
+              "name": "Line Chart",
+              "subtitle": "Continuous trend",
+              "use": [
+                "Showing a trend or rate of change over many data points",
+                "Data is continuous (makes sense to interpolate between points)"
+              ],
+              "avoid": [
+                "Exact individual values matter more than the trend shape"
+              ]
+            },
+            {
+              "name": "Column Chart",
+              "subtitle": "Periodic comparison",
+              "use": [
+                "Emphasizing discrete values at intervals (months, quarters)",
+                "Fewer than ~20 data points"
+              ],
+              "avoid": [
+                "Needing to show a smooth trend or a large number of data points"
+              ]
+            },
+            {
+              "name": "Multi-Line Chart",
+              "subtitle": "Multiple trends",
+              "use": [
+                "Comparing multiple series over time",
+                "Overlapping lines remain distinct enough to see relationships"
+              ]
+            },
+            {
+              "name": "Area Chart",
+              "subtitle": "Cumulative",
+              "use": [
+                "Emphasizing total volume or magnitude over time",
+                "Smooth, gradual changes"
+              ],
+              "avoid": [
+                "Data is extremely volatile with large spikes/dips"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Against Reference",
+          "charts": [
+            {
+              "name": "Bar Chart with Reference Line",
+              "subtitle": "Single reference",
+              "notes": [
+                "Good for comparing each category to a benchmark or target"
+              ]
+            },
+            {
+              "name": "Bullet Chart",
+              "subtitle": "Multiple references",
+              "notes": [
+                "Can show performance against multiple thresholds (e.g., target, stretch goal)"
+              ]
+            },
+            {
+              "name": "Gauge Chart",
+              "subtitle": "Progress to goal",
+              "use": [
+                "Showing a single metric’s progress toward 100% (or a target)"
+              ],
+              "avoid": [
+                "Multiple metrics need comparison"
+              ]
+            },
+            {
+              "name": "KPI Card",
+              "subtitle": "Simple status",
+              "notes": [
+                "Keep text and callout clean to highlight one big metric or status"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Relationships",
+      "subCategories": [
+        {
+          "title": "Numbers That Move Together",
+          "charts": [
+            {
+              "name": "Scatter Plot",
+              "subtitle": "Two variables",
+              "use": [
+                "Checking correlation or spotting outliers between two numeric variables",
+                "Large datasets where density or cluster patterns are important"
+              ]
+            },
+            {
+              "name": "Matrix (or advanced table)",
+              "subtitle": "Multiple variables",
+              "notes": [
+                "Compare multiple numeric variables in a grid",
+                "Use color or symbols to indicate correlations"
+              ]
+            },
+            {
+              "name": "Bubble Chart",
+              "subtitle": "With size",
+              "use": [
+                "Adding a third numeric variable (bubble size)",
+                "Looking for patterns with an extra dimension"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Things That Go Together",
+          "charts": [
+            {
+              "name": "Heatmap",
+              "subtitle": "Category pairs",
+              "use": [
+                "Visualizing intensity/frequency across two categorical dimensions",
+                "Spotting patterns, clusters, or anomalies via color"
+              ],
+              "avoid": [
+                "Precise numeric comparison is critical—heatmaps are more about trends"
+              ]
+            },
+            {
+              "name": "Matrix",
+              "subtitle": "Basic correlation",
+              "notes": [
+                "Multiple variables with color-coded correlation values"
+              ]
+            },
+            {
+              "name": "Table with conditional formatting",
+              "subtitle": "Simple mapping",
+              "notes": [
+                "For small data sets where exact numbers must remain visible"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Patterns Over Time",
+          "charts": [
+            {
+              "name": "Multi-Line Chart",
+              "subtitle": "Multiple series",
+              "notes": [
+                "Already covered above; emphasizes concurrent trends"
+              ]
+            },
+            {
+              "name": "Combo Chart (Line + Column)",
+              "subtitle": "Combined trends",
+              "use": [
+                "Two related metrics share a time axis but differ in how they should be visualized",
+                "Need to highlight a primary (column) vs. secondary (line) metric"
+              ]
+            },
+            {
+              "name": "Small Multiples",
+              "subtitle": "Period comparison",
+              "notes": [
+                "Comparing the same measure across different small charts helps isolate patterns"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

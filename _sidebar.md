@@ -14,17 +14,10 @@
   * [Global Elements](content/layout/elements.md)
   * [Spacing](content/layout/structure.md)
 
-* Interactions and Controls
-  * [Interactivity: What & Why](content/interactions/progressive-disclosure.md)
-  * [Filtering](content/interactions/implementation.md)
-  * [Toggling](content/interactions/placement.md)
-  * [Navigation](content/interactions/placement.md)
-  * [Styling & Placement](content/interactions/styling-affordances.md)
-
 * Data Visualizations
   * [Choosing a chart](content/visualizations/selection.md)
-  * [Styling a chart](content/visualizations/anatomy.md)
-  * [Advanced Patterns](content/visualizations/advanced-patterns.md)
+  * [Chart Anatomy](content/visualizations/anatomy.md)
+  * [Visualization Color](content/visualizations/advanced-patterns.md)
 
 * Standard Components
   * [Cards](content/components/cards.md)
@@ -46,3 +39,10 @@
 * Appendix
   * [FAQ](content/appendix/faq.md)
   * [Reading](content/appendix/reading.md)
+
+* Interactions and Controls
+  * [Interactivity: What & Why](content/interactions/progressive-disclosure.md)
+  * [Filtering](content/interactions/implementation.md)
+  * [Toggling](content/interactions/placement.md)
+  * [Navigation](content/interactions/placement.md)
+  * [Styling & Placement](content/interactions/styling-affordances.md)
