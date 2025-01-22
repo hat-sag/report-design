@@ -12,9 +12,15 @@ Design guidelines can be an important tool for creating visually appealing, intu
 </td>
 <td width="42%" style="border: none; vertical-align: top;">
 
-### Navigating the guidelines
-1. **Were you handed specs or wireframes?**  
-If not, consider reading through the principles sections to help inform report content and flow.
+### A report from Aline should be
+1. **Impactful**  
+Drives action and decision making. Creates immediate understanding. Prioritizes relevance.
+
+2. **Intuitive**  
+Guides the user naturally. Frictionless. Feels immediately familiar. Simplifies complexities.
+
+3. **Refined**  
+Balances form & function. Prioritizes elegant design. Purified, free of clutter, essential.
 </td>
 </tr>
 </table>

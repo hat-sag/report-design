@@ -58,12 +58,12 @@ Key Questions:
 
 <!-- card {"variant": "navy", "type": "composition"} -->
 #### Donut Chart
-Simple proportions for immediate understanding.
+Simple proportions at-a-glance.
 
 **Perfect when:**  
-- You need instant visual impact for key metrics  
-- Your audience needs quick, familiar visualization  
-- You’re showing 1–2 dominant proportions that matter  
+- You need instant visual impact
+- The audience needs quick, familiar chart  
+- Showing 1–2 dominant proportions  
 
 **Skip it when:**  
 - You have more than 6 segments  
@@ -104,7 +104,7 @@ Hierarchical data where size tells the story.
 - Exact values are crucial  
 - You don’t have a clear hierarchy  
 
-?> **Pro Tip**: Limit hierarchical levels to maintain clarity.
+?> **Pro Tip**: Keep hierarchical levels minimal for clarity"
 <!-- end-card -->
 
 <!-- card {"variant": "navy", "type": "comparison"} -->

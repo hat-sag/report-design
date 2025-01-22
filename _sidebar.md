@@ -1,13 +1,4 @@
 #### [Home](readme.md)
-* Guiding Principles
-  * [Impactful](content/principles/impactful.md)
-  * [Essential](content/principles/essential.md)
-  * [Intuitive](content/principles/intuitive.md)
-
-* Design Foundations
-  * [Color](content/design-foundations/color.md)
-  * [Typography](content/design-foundations/typography.md)
-  * [Branding](content/design-foundations/branding.md)
 
 * Structure
   * [Layout](content/layout/arrangement.md)
@@ -31,6 +22,11 @@
   * [Language Guidelines](content/writing/language.md)
   * [Formatting](content/writing/formatting.md)
 
+* Design Foundations
+  * [Color](content/design-foundations/color.md)
+  * [Typography](content/design-foundations/typography.md)
+  * [Branding](content/design-foundations/branding.md)
+
 * Resources
   * [Checklist](content/resources/checklist.md)
   * [Template](content/resources/template.md)
@@ -46,3 +42,8 @@
   * [Toggling](content/interactions/placement.md)
   * [Navigation](content/interactions/placement.md)
   * [Styling & Placement](content/interactions/styling-affordances.md)
+
+* Guiding Principles
+  * [Impactful](content/principles/impactful.md)
+  * [Essential](content/principles/essential.md)
+  * [Intuitive](content/principles/intuitive.md)
