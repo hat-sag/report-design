@@ -1,177 +1,224 @@
-# Chart Anatomy Guide
+# **Chart Anatomy & General Visualization Standards**
 
-> A comprehensive guide to creating clear and effective data visualizations
+## **1. Principles of Effective Chart Design**
 
-<!-- tabs:start -->
+A chart should present **no barriers to entry**—users should **immediately grasp its key insights** without unnecessary complexity.
 
-#### **Core Elements**
+- **Start with a blank slate**—no labels, titles, or gridlines—**then add only what is necessary.**
+- A **high-impact chart** makes the insight **immediately visible** and **intuitive to interpret.**
+- A **refined chart** includes only the elements **necessary for comprehension**, ensuring a **clean, effective design.**
 
-## Fundamental Components
-<!-- card-grid -->
+By **following this minimalist-first approach**, we ensure that every element added serves a **clear and essential purpose** in communication.
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Data Labels
+---
 
-**When to use**  
-Almost always. Opt for data labels over measure axis labels wherever and whenever possible. Data labels make values easy to read.
+## **2. Chart Construction Order**
 
-**When not to use**  
-If the labels take up about as much space as the data itself, cannot be quickly assessed, or are too cramped into a small space, avoid them.
+To maintain clarity, build charts in the following order, **ensuring each element is necessary before adding it back in**:
 
-?> **Best Practice Example**  
-![Data Labels Example](/_images/data-labels-example.png)
-<!-- end-card -->
+1. **Base Chart** → Start with only the **raw data visualization** (no labels, titles, or gridlines).
+2. **Title & Context** → Add a **clear, human-readable title** that concisely explains what’s shown.
+3. **Data Labels & Legends** → Include **only when necessary** to aid interpretation.
+4. **Axes & Gridlines** → Use **sparingly**, only when they improve clarity.
+5. **Styling & Layout Refinements** → Final touches, ensuring a **balanced and accessible visual structure**.
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Axes Scale
+> Key principle: If an element does not actively enhance readability, it should not be included.
+> 
 
-**Starting at Zero**  
-- Mandatory for part-to-whole and comparison charts (bar, area)
-- Prevents visual distortion in relative size comparisons
-- Essential for maintaining data integrity
+---
 
-**Non-Zero Starts**  
-- Appropriate for line charts and scatter plots
-- Better for showing trends and patterns
-- Helps identify subtle changes in data
+## **3. Titling & Context**
 
-!> **Important Note**  
-Bar charts must always start at zero to prevent visual distortion.
-<!-- end-card -->
+### **3.1 General Titling Guidelines**
 
-<!-- end-card-grid -->
+✅ **Every chart should have a title unless it is an obvious supplementary visual.**
 
-#### **Annotations**
+✅ **Titles must be descriptive yet simple.** They should **clearly define** what is being shown **without unnecessary abbreviations or vague wording.**
 
-## Visual Helpers
-<!-- card-grid -->
+**Recommended Format:**
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Legends
+🟢 **[Measure] by [Dimension]** (e.g., "Occupancy by Month")
 
-**Quantitative Encoding Rules**
-- Never use for same-metric color encoding
-- Required for separate measures
-- Always include clear titles
+🔴 **Avoid vague or unclear phrasing** (e.g., "Occupancy Trends" lacks specificity).
 
-**Placement Guidelines**
-- Donut charts: Right side (or bottom if space limited)
-- Other charts: Top or left position
-- Ensure proximity to related data
+📌 **If your data fields have unclear names**, rename them in the chart settings to ensure human readability.
 
-**Anti-Patterns**
-- Avoid categorical legends when possible
-- Prevent context separation
-- Minimize cognitive load
-<!-- end-card -->
+📌 **For dynamic Power BI reports using hierarchies**, be aware that **titles may update dynamically based on drill-down selections.** Ensure titles make sense **at all hierarchy levels.**
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Reference Lines
+---
 
-**Implementation Guidelines**
-- Use dotted or dashed styles
-- Ensure high color contrast
-- Keep distinct from data lines
+### **3.2 Time-Based Titles**
 
-**When to Use**
-- Highlighting thresholds
-- Showing averages
-- Marking significant values
+Titles should reflect the nature of the analysis:
 
-?> **Visual Example**  
-![Reference Lines Example](/_images/reference-lines.png)
-<!-- end-card -->
+- **Point-in-time comparisons** → `[Measure] by [Month/Quarter/Year]`
+- **Trends & changes over time** → `[Measure] Over Time`
 
-<!-- end-card-grid -->
+---
 
-#### **Best Practices**
+### **3.3 Multiple Variables in Titles**
 
-## Optimization Guidelines
-<!-- card-grid -->
+**When displaying multiple variables, choose the correct title structure:**
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Grid Lines
+| **Scenario** | **Use This Format** | **Example** |
+| --- | --- | --- |
+| Comparing two measures against each other | **"vs."** | "Revenue vs. Expenses" |
+| Showing two measures side by side (not in direct comparison) | **"and"** | "Revenue and Cost by Region" |
+| Showing two dimensions by one measure | **"and"** | "Revenue by Region and Product" |
 
-**Usage Principles**
-- Default to no gridlines
-- Add only when necessary
-- Keep subtle (light gray)
+---
 
-**When to Use**
-- Precise value reading needed
-- Cross-category comparisons
-- Complex data relationships
+### **3.4 Titling Tables**
 
-**When to Avoid**
-- Simple visualizations
-- Pattern-focused analysis
-- Dense data displays
-<!-- end-card -->
+📌 **Tables need a title when:**
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Tooltips
+- They are **standalone elements** without supporting charts.
+- **Time periods or dimensions** aren’t immediately obvious.
+- Visual alignment with other report elements **would be disrupted without a title.**
 
-**Context Enhancement**
-- Show hierarchy drill-downs
-- Display percentage breakdowns
-- Reveal detailed data points
+📌 **Tables can omit a title when:**
 
-**Design Guidelines**
-- Limit to 2-3 metrics
-- Keep charts simple
-- Avoid visual competition
+- Their context is **completely apparent from nearby charts or column headers.**
 
-**Implementation Tips**
-- Clear formatting
-- Consistent positioning
-- Intuitive triggers
-<!-- end-card -->
+**Recommended Formats:**
 
-<!-- end-card-grid -->
+✅ General: `"Sales Metrics"`
 
-## Advanced Topics
-<!-- card-grid -->
+✅ Contextual: `"Sales Metrics (YTD)"`
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Axis Annotation
+✅ If needed, **use subtitles** to clarify table functionality.
 
-**Label Best Practices**
-- Use when value labels are cluttered
-- Maintain horizontal orientation
-- Prioritize readability
+---
 
-**Title Guidelines**
-- Include for non-obvious measures
-- Use human-readable text
-- Clarify units of measurement
-<!-- end-card -->
+### **3.5 Visualizations Using Field Parameters**
 
-<!-- card {"variant": "navy", "type": "temporal"} -->
-#### Visual Hierarchy
+Since **Power BI does not dynamically update measure names in titles**, follow one of these approaches:
 
-**Core Principles**
-- Emphasize important data
-- Create clear relationships
-- Guide viewer attention
+**Option 1:** If the slicer selection is visible and intuitive, name the measure broadly (e.g., `"Conversion Rates"`).
 
-**Implementation**
-- Consistent spacing
-- Thoughtful color use
-- Strategic element placement
-<!-- end-card -->
+**Option 2:** Create a measure that dynamically references the selected parameter in the title.
 
-<!-- end-card-grid -->
+> Guiding principle: Choose the approach that makes the parameter’s function most obvious without requiring extra effort from the user.
+> 
 
-<!-- tabs:end -->
+---
 
-## Quick Reference
+## **4. Labels & Axes**
 
-> Key points to remember when creating charts
+### **4.1 Category Labels**
 
-1. Start axes at zero for comparison charts
-2. Use data labels whenever space permits
-3. Avoid categorical legends when possible
-4. Keep tooltips simple and focused
-5. Add grid lines only when necessary
+✅ **Prefer direct category labels** instead of relying on legends.
 
-?> **Pro Tip**: Always test your visualization with sample data to ensure readability and effectiveness.
+✅ **Ensure clarity**—users should not have to scan across the page to connect labels to data.
+
+---
+
+### **4.2 Data Labels vs. Axis Labels**
+
+**Use data labels whenever possible.** Only use axis labels when **data density is too high** for direct labeling.
+
+📌 **Best Practices:**
+
+- ✅ **Use data labels when exact values matter** (e.g., bar charts, column charts).
+- ✅ **Use axis labels only when labeling every data point would create clutter.**
+- 🚫 **Avoid overuse of labels**—they should not overpower the chart.
+
+📌 **For sparklines, data labels are often unnecessary.**
+
+---
+
+### **4.3 Axes Guidelines**
+
+✅ **Use axis labels only when data labels are impractical.**
+
+✅ **Always title axes when:**
+
+- The chart **has dual axes.**
+- The **title alone does not fully explain the chart contents.**
+
+📌 **Chart-specific recommendations:**
+
+- **Horizontal bar charts** → Avoid axis labels (eye movement distance issue).
+- **Line charts** → Y-axis labels help users scan along the chart naturally.
+- **When using time-based data, use a continuous date axis** instead of categorical when possible.
+
+---
+
+## **5. Layout & Formatting Standards**
+
+### **5.1 Chart Size & Data-to-Pixel Ratio Considerations**
+
+✅ **Charts should be large enough to clearly display data but not waste space.**
+
+✅ **Larger charts imply greater importance**—size should reflect significance.
+
+✅ **Maintain a good data-to-pixel ratio** (avoid excessive empty space).
+
+✅ **Expand y-axis width (32px or 36px if needed) to avoid truncation.**
+
+---
+
+### **5.2 Universal Formatting**
+
+📌 **Technical Standards:**
+
+- **Padding:** `12-12-12-8` (top-right-left-bottom)
+- **Background:** Always white (no unnecessary background colors).
+- **Font:** Segoe UI, minimum **9px** size (exceptions for constrained spaces).
+- **Text alignment:** Left-aligned.
+- **Font emphasis:** Semi-bold preferred over bold.
+
+---
+
+### **5.3 Legends**
+
+🚫 **Avoid legends whenever possible—direct labeling is preferred.**
+
+📌 **If necessary, place based on chart orientation:**
+
+- **Wide charts:** Position at **top or bottom**.
+- **Tall charts:** Position at **left or right**.
+
+---
+
+## **6. Additional Contextual Elements**
+
+### **6.1 Tooltips**
+
+✅ **Use tooltips only when critical chart context is missing.**
+
+🚫 **Avoid over-complex tooltips** (such as extra visualizations) unless they align with common UI patterns.
+
+---
+
+### **6.2 Trendlines & Sparklines**
+
+✅ **Use when:**
+
+- A **single important metric needs context** (e.g., small charts alongside KPIs).
+- **Trend insight adds value** to absolute measures.
+
+🚫 **Avoid when:**
+
+- The **pattern is already clear.**
+- They **add more noise than signal.**
+
+📌 **Styling:** Dashed `1px`, high contrast with chart color.
+
+---
+
+### **6.3 Reference Lines**
+
+✅ **Use reference lines when:**
+
+- A **zero baseline helps users orient to positive/negative values.**
+- **Benchmarking is essential to interpretation.**
+
+🚫 **Avoid reference lines when:**
+
+- They **compete visually with key data points.**
+
+📌 **Styling:**
+
+- **Dynamic targets:** Dotted `2px`, contrast color.
+- **Static baselines:** Solid, medium grey to blend naturally.
