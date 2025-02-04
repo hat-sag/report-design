@@ -17,11 +17,6 @@
   * [Slicers](content/components/slicers.md)
   * [Containers & Shadows](content/components/containers-shadows.md)
 
-* Writing
-  * [Titling](content/writing/titling.md)
-  * [Language Guidelines](content/writing/language.md)
-  * [Formatting](content/writing/formatting.md)
-
 * Design Foundations
   * [Color](content/design-foundations/color.md)
   * [Typography](content/design-foundations/typography.md)
@@ -31,10 +26,8 @@
   * [Checklist](content/resources/checklist.md)
   * [Template](content/resources/template.md)
   * [Theme](content/resources/theme.md)
+  * [Estimating Effort](content/appendix/estimation.md)
 
-* Appendix
-  * [FAQ](content/appendix/faq.md)
-  * [Reading](content/appendix/reading.md)
 
 * Interactions and Controls
   * [Interactivity: What & Why](content/interactions/progressive-disclosure.md)

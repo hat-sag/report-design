@@ -1,5 +1,6 @@
 # **Chart Anatomy & General Visualization Standards**
 
+
 ## **1. Principles of Effective Chart Design**
 
 A chart should present **no barriers to entry**—users should **immediately grasp its key insights** without unnecessary complexity.
